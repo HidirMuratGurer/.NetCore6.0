@@ -1,0 +1,39 @@
+﻿@model UserUpdateViewModel
+@{
+    ViewData["Title"] = "WriterEditProfile";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+    <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+                    <h2 class="card-title">Yazar Bilgileri Düzenleme</h2>
+                    <br>
+                   
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Adınız!</label>
+                        <input type="text" asp-for="@Model.namesurname" class="form-control" />
+                        </div>
+                       <div class="form-group">
+                            <label for="exampleInputEmail3">Mevcut Şifrenizi Giriniz.</label>
+                            <input type="password" asp-for="@Model.password" class="form-control" />
+                            @Html.ValidationMessage("PasswordError", new { @class = "text-danger" })
+                        </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4"><h5>Resim</h5></label>
+                        <br />
+                        <img src= "@Model.stringimageurl" alt="Image" />
+                        <input type="file"  asp-for="@Model.imageurl" class="form-control" >
+                      </div>
+                      <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                      <button class="btn btn-light">Vazgeç</button>
+                      
+                    </form>
+                    
+                  </div>
+                </div>
+              </div>

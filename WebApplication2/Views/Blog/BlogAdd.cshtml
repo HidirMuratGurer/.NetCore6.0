@@ -1,0 +1,60 @@
+﻿@model Tuple<EntityLayer.Concrete.Blog,BlogAddModel>
+
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post , new {@enctype = "multipart/form-data" }))
+{
+@*<form class="form-group" method="post" enctype="multipart/form-data">*@
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2>Blog Ekleme Sayfası</h2>
+                <br />
+       
+                @Html.Label("Blog Başlığı")
+                @Html.TextBoxFor(x => x.Item1.BlogTitle, new {@class = "form-control"})
+                <span asp-validation-for="Item1.BlogTitle" class="text-danger"></span>
+                <br />
+                <div class="form-group">
+                     <label><h5>Blog Resmi</h5></label>
+                     <input type="file" asp-for="Item2.blogImage">
+                        
+                </div>
+                <span asp-validation-for="Item1.BlogImage" class="text-danger"></span>
+                 <br />
+                @*@Html.Label("Blog Görseli")
+                @Html.TextBoxFor(x => x.Item1.BlogImage, new {@class = "form-control"})
+                
+                <br />
+               @* @Html.Label("Blog Küçük Görsel")
+                @Html.TextBoxFor(x => x.Item1.BlogThumbnailImage, new {@class = "form-control"})*@
+                <div class="form-group">
+                     <label><h5>Blog Thump Resmi</h5></label>
+                     <input type="file" asp-for="Item2.blogthumImage">
+                        
+                </div>
+                 <br />
+                <span asp-validation-for="Item1.BlogThumbnailImage" class="text-danger"></span>
+                 <br />
+
+                @Html.Label("Kategori")
+                @Html.DropDownListFor(x => x.Item1.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+   
+                <br />
+                @Html.Label("Blog İçeriği")
+                @Html.TextAreaFor(x => x.Item1.BlogContent , 15 , 3 ,new {@class = "form-control"})
+                <span asp-validation-for="Item1.BlogContent" class="text-danger"></span>
+                <button class="btn btn-info">Yazıyı Kaydet</button>
+
+            </div>
+        </div>
+     </div>
+    <br />
+@*</form>*@
+}
+
